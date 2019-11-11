@@ -8,3 +8,5 @@ $ cat .gitignore
 
 # ignore temporary files
 *~
+
+*.iml

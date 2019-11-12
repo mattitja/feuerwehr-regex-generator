@@ -1,30 +1,88 @@
 package de.firemergency;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Map;
-
-import org.junit.Test;
 
 public class AddressCodeGeneratorTest {
 	
 	@Test
-	public void test() {
-		String test1 = "10:27 28.06.1505AEinsatzalarm -16355H/Hilfelstg./Amtshilfe) 10:27/Trittau:(Osterkamp)/Lütjenseer Straße(1)//Keller 30 cm unter Wasser";
-		String test2 = "17:08 28.07.1514ATest Einheit -17762B/BMA Alarm) 17:08/Reinbek:ETH Entsorgungs-Managemen()/Carl-Zeiss-Straße(12 -14)//";
-		String test3 = "00:07 22.07.15 7AEinsatzalarm -94818P/Partyalarm - groß) 00:08/Aumühle:(Joe)/Fasanenweg(7)//Juhu Goggo - die Adresserkennung funktioniert!!!";
-		String test4 = "19:00 01.01.1530DProbealarm -94818P/Di.19:00) 19:00/Bad Oldesloe:IRLS()/Mommsenstraße(13)//regelmäßige Geräteprüfung";
-		String test5 = "23:51 30.08.1507AEinsatzalarm -18793H/Gasgeruch) 23:51/Aumühle:DHH(Name)/Auf der Koppel(44)//Text steht hier";
+	public void test1() {
+		String testData = "STICHWORT: FEU 00 \n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "MELDEBILD: Wohnungsbrand MFH\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "INFO1: Hier steht der Infotext\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "INFO2:  \n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "ORT: Ahrensburg (OD)\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "ORTSTEIL: Ahrensburg\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "STRASSE: Am Weinberg 2\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "EINSATZOBJEKT: FF Ahrensburg (OD60.01)\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "BMA-NR: 625\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "UNTEROBJEKT: \n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "SEGMENTINFO: \n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "KOORDINATEN: 53,67916040 10,24439916\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "ALARMIERTE FAHRZEUGE: Fl OD 00-01-01,FF Ahrensburg (OD60),Fl OD 60-25-01,Fl OD 60-32-01,Fl OD 60-43-01,Fl OD 60-47-01,Fl OD 60-48-01,Fl OD 60-51-01,Fl OD 60-57-01,Fl OD 60-65-01,FF Wulfsdorf (OD61),Fl OD 61-45-01,FF Ahrensfelde (OD62),Fl OD 62-45-01\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "WACHEN IM EINSATZ: FF Ahrensburg (OD60),FF Ahrensfelde (OD62),FF Wulfsdorf (OD61),KFV Stormarn (OD)\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "ALARMIERTE RICS: XXXXX-A\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "UNTERADRESSE: A\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "EINSATZNUMMER: 1190606234\n"
+					   + "\n"
+					   + " \n"
+					   + "\n"
+					   + "SONDERRECHTE: ja";
 		
-		ArrayList<String> testCases = new ArrayList<String>();
-		testCases.add(test1);
-		testCases.add(test2);
-		testCases.add(test3);
-		testCases.add(test4);
-		testCases.add(test5);
-		
-		for (String test : testCases) {
-			Map<String, Object> data = AddressCodeGenerator.getAddress(test);
-			System.out.println(data.toString());			
-		}		
+		Map<String, Object> data = AddressCodeGenerator.getAddress(testData);
+		System.out.println(data.toString());
+
+		Assert.assertEquals(18, data.size());
 	}
 }

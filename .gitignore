@@ -1,4 +1,5 @@
 $ cat .gitignore
+.DS_Store
 
 # ignore java class files
 *.class

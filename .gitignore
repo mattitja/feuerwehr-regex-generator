@@ -13,3 +13,5 @@ $ cat .gitignore
 *.iml
 
 .idea/
+
+target/

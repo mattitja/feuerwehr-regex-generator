@@ -20,7 +20,7 @@ public class AddressCodeGenerator {
 		Matcher m = pattern.matcher(input);
 		
 		while (m.find() && m.groupCount() == 2) {
-			data.put(m.group(1).trim(), m.group(2).trim());
+			data.put("j_" + m.group(1).trim(), m.group(2).trim());
 		}
 		
 		return data;

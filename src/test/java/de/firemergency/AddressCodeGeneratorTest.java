@@ -1,8 +1,14 @@
 package de.firemergency;
 
+import de.alamos.fe2.external.ExtractorObject;
+import de.alamos.fe2.external.enums.EAlarmDataEntries;
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddressCodeGeneratorTest {
 
@@ -113,19 +119,36 @@ public class AddressCodeGeneratorTest {
 									   + "SONDERRECHTE: ja\n";
 
 
+
 	@Test
 	public void test1() {
-		Map<String, Object> data = AddressCodeGenerator.getAddress(TEST_DATA_1);
-		System.out.println(data.toString());
+		// given
+		Map<String, String> input = new HashMap<>();
+		input.put(EAlarmDataEntries.TEXT.getKey(), TEST_DATA_1);
+		AddressCodeGenerator addressCodeGenerator = new AddressCodeGenerator();
 
-		//Assert.assertEquals(18, data.size());
+		// when
+		ExtractorObject result = addressCodeGenerator.extractFromMap(input);
+
+		// then
+		System.out.println(result);
+
+		Assert.assertEquals(18, result.getData().size());
 	}
 
 	@Test
 	public void test2() {
-		Map<String, Object> data = AddressCodeGenerator.getAddress(TEST_DATA_2);
-		System.out.println(data.toString());
+		// given
+		Map<String, String> input = new HashMap<>();
+		input.put(EAlarmDataEntries.TEXT.getKey(), TEST_DATA_2);
+		AddressCodeGenerator addressCodeGenerator = new AddressCodeGenerator();
 
-		//Assert.assertEquals(18, data.size());
+		// when
+		ExtractorObject result = addressCodeGenerator.extractFromMap(input);
+
+		// then
+		System.out.println(result);
+
+		Assert.assertEquals(18, result.getData().size());
 	}
 }
